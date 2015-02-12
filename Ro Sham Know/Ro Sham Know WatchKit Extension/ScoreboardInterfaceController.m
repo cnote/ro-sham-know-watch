@@ -22,24 +22,20 @@
 
 @implementation ScoreboardInterfaceController
 
-- (instancetype)initWithContext:(id)context
+- (void)awakeWithContext:(id)context
 {
-    self = [super initWithContext:context];
-    if (self){
-        // Initialize variables here.
-        // Configure interface objects here.
-        NSLog(@"%@ initWithContext", self);
-        self.matchResult = (MatchResult *)context;
-        NSString *winner = (self.matchResult.leftScore > self.matchResult.rightScore) ? @"Left" : @"Right";
-        NSString *loser = (self.matchResult.leftScore > self.matchResult.rightScore) ? @"Right" : @"Left";
-        //self.scoreLabel.text = [NSString stringWithFormat:@"%@ beat %@, %@ to %@!", winner, loser, @(MAX(self.matchResult.leftScore, self.matchResult.rightScore)), @(MIN(self.matchResult.leftScore, self.matchResult.rightScore))];
-        
-        self.resultLabel.text = [NSString stringWithFormat:@"%@ beat %@!", winner, loser];
-        
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %@ to %@", @(MAX(self.matchResult.leftScore, self.matchResult.rightScore)), @(MIN(self.matchResult.leftScore, self.matchResult.rightScore))];
-        
-    }
-    return self;
+    [super awakeWithContext:context];
+    // Initialize variables here.
+    // Configure interface objects here.
+    NSLog(@"%@ awakeWithContext", self);
+    self.matchResult = (MatchResult *)context;
+    NSString *winner = (self.matchResult.leftScore > self.matchResult.rightScore) ? @"Left" : @"Right";
+    NSString *loser = (self.matchResult.leftScore > self.matchResult.rightScore) ? @"Right" : @"Left";
+    //self.scoreLabel.text = [NSString stringWithFormat:@"%@ beat %@, %@ to %@!", winner, loser, @(MAX(self.matchResult.leftScore, self.matchResult.rightScore)), @(MIN(self.matchResult.leftScore, self.matchResult.rightScore))];
+    
+    self.resultLabel.text = [NSString stringWithFormat:@"%@ beat %@!", winner, loser];
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %@ to %@", @(MAX(self.matchResult.leftScore, self.matchResult.rightScore)), @(MIN(self.matchResult.leftScore, self.matchResult.rightScore))];
 }
 
 - (void)willActivate

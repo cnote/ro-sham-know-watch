@@ -30,18 +30,15 @@
 
 @implementation ConfigurationInterfaceController
 
-- (instancetype)initWithContext:(id)context
+- (void)awakeWithContext:(id)context
 {
-    self = [super initWithContext:context];
-    if (self){
-        // Initialize variables here.
-        // Configure interface objects here.
-        NSLog(@"%@ initWithContext", self);
-        self.scoringContext = [[ScoringContext alloc] init];
-        [self turnOffBestOfMode];
-        [self calculateWinningScore:0.2]; //need to match initial slider value from IB
-    }
-    return self;
+    [super awakeWithContext:context];
+    // Initialize variables here.
+    // Configure interface objects here.
+    NSLog(@"%@ awakeWithContext", self);
+    self.scoringContext = [[ScoringContext alloc] init];
+    [self turnOffBestOfMode];
+    [self calculateWinningScore:0.2]; //need to match initial slider value from IB
 }
 
 - (void)willActivate
@@ -60,8 +57,8 @@
 - (IBAction)bestOfButtonPressed
 {
     self.scoringContext.isBestOfEnabled = YES;
-    [self.bestOfButton setColor:[UIColor purpleColor]];
-    [self.firstToButton setColor:[UIColor clearColor]];
+    [self.bestOfButton setBackgroundColor:[UIColor purpleColor]];
+    [self.firstToButton setBackgroundColor:[UIColor clearColor]];
     [self setNameOfStartGameButton];
 }
 
@@ -73,8 +70,8 @@
 - (void) turnOffBestOfMode
 {
     self.scoringContext.isBestOfEnabled = NO;
-    [self.bestOfButton setColor:[UIColor clearColor]];
-    [self.firstToButton setColor:[UIColor purpleColor]];
+    [self.bestOfButton setBackgroundColor:[UIColor clearColor]];
+    [self.firstToButton setBackgroundColor:[UIColor purpleColor]];
     [self setNameOfStartGameButton];
 }
 

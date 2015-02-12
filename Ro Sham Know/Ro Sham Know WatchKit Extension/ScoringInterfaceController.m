@@ -32,18 +32,14 @@
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithContext:(id)context
+- (void)awakeWithContext:(id)context
 {
-    self = [super initWithContext:context];
-    if (self)
-    {
-        // Initialize variables here.
-        self.previousPresses = [[NSMutableArray alloc] init];
-        // Configure interface objects here.
-        [self.undoButton setEnabled:NO];
-        self.scoringContext = context;
-    }
-    return self;
+    [super awakeWithContext:context];
+    // Initialize variables here.
+    self.previousPresses = [[NSMutableArray alloc] init];
+    // Configure interface objects here.
+    [self.undoButton setEnabled:NO];
+    self.scoringContext = context;
 }
 
 - (void)willActivate
