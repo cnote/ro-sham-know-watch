@@ -129,7 +129,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E146D9921A22877A00369528 /* Objects */ = {
+		E146D9921A22877A00369528 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E19D1D0B1A226AFC00DFE063 /* MatchResult.h */,
@@ -137,7 +137,7 @@
 				E1AF2CC61A22A0FF009240BF /* ScoringContext.h */,
 				E1AF2CC71A22A0FF009240BF /* ScoringContext.m */,
 			);
-			name = Objects;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		E146D9931A2287A400369528 /* Interface Controllers */ = {
@@ -151,6 +151,15 @@
 				E146D9951A22898200369528 /* ScoreboardInterfaceController.m */,
 			);
 			name = "Interface Controllers";
+			sourceTree = "<group>";
+		};
+		E15D5F6B1A9008200023329F /* GlanceController */ = {
+			isa = PBXGroup;
+			children = (
+				E19D1CEF1A2266B300DFE063 /* GlanceController.h */,
+				E19D1CF01A2266B300DFE063 /* GlanceController.m */,
+			);
+			name = GlanceController;
 			sourceTree = "<group>";
 		};
 		E19D1CAF1A22668900DFE063 = {
@@ -228,10 +237,9 @@
 		E19D1CE91A2266B300DFE063 /* Ro Sham Know WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				E146D9921A22877A00369528 /* Objects */,
+				E146D9921A22877A00369528 /* Model */,
 				E146D9931A2287A400369528 /* Interface Controllers */,
-				E19D1CEF1A2266B300DFE063 /* GlanceController.h */,
-				E19D1CF01A2266B300DFE063 /* GlanceController.m */,
+				E15D5F6B1A9008200023329F /* GlanceController */,
 				E19D1CF21A2266B300DFE063 /* Images.xcassets */,
 				E19D1CEA1A2266B300DFE063 /* Supporting Files */,
 			);

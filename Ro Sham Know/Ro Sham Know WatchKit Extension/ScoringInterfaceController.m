@@ -3,12 +3,13 @@
 //  Ro Sham Know
 //
 //  Created by Conor Prischmann on 11/23/14.
-//  Copyright (c) 2014 Myriad Mobile. All rights reserved.
+//  Copyright (c) 2014-2015 Conor Prischmann. All rights reserved.
 //
 
 #import "ScoringInterfaceController.h"
 #import "ScoringContext.h"
 #import "MatchResult.h"
+
 
 @interface ScoringInterfaceController ()
 
@@ -16,9 +17,9 @@
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *rightScore;
 @property (weak, nonatomic) IBOutlet WKInterfaceButton *undoButton;
 
-- (IBAction)undoPressed;
-- (IBAction)leftPressed;
-- (IBAction)rightPressed;
+- (IBAction) undoPressed;
+- (IBAction) leftPressed;
+- (IBAction) rightPressed;
 
 @property (nonatomic) NSUInteger leftCount;
 @property (nonatomic) NSUInteger rightCount;
@@ -32,7 +33,7 @@
 
 #pragma mark - Lifecycle
 
-- (void)awakeWithContext:(id)context
+- (void) awakeWithContext:(id) context
 {
     [super awakeWithContext:context];
     // Initialize variables here.
@@ -42,13 +43,13 @@
     self.scoringContext = context;
 }
 
-- (void)willActivate
+- (void) willActivate
 {
     // This method is called when watch view controller is about to be visible to user
     NSLog(@"%@ will activate", self);
 }
 
-- (void)didDeactivate
+- (void) didDeactivate
 {
     // This method is called when watch view controller is no longer visible
     NSLog(@"%@ did deactivate", self);
@@ -56,11 +57,11 @@
 
 #pragma mark - Button Handling
 
-- (IBAction)undoPressed
+- (IBAction) undoPressed
 {
     if ([self.previousPresses count] > 0)
     {
-        if ([[self.previousPresses lastObject] isEqualToNumber:@-1])
+        if ([[self.previousPresses lastObject] isEqualToNumber:@ - 1])
         {
             self.leftCount--;
             [self updateLeftDisplay];
@@ -70,7 +71,9 @@
             self.rightCount--;
             [self updateRightDisplay];
         }
+        
         [self.previousPresses removeLastObject];
+        
         if ([self.previousPresses count] < 1)
         {
             [self.undoButton setEnabled:NO];
@@ -78,16 +81,16 @@
     }
 }
 
-- (IBAction)leftPressed
+- (IBAction) leftPressed
 {
     self.leftCount++;
     [self updateLeftDisplay];
-    [self.previousPresses addObject:@-1];
+    [self.previousPresses addObject:@ - 1];
     [self.undoButton setEnabled:YES];
     [self checkForWinner];
 }
 
-- (IBAction)rightPressed
+- (IBAction) rightPressed
 {
     self.rightCount++;
     [self updateRightDisplay];
@@ -98,12 +101,12 @@
 
 - (void) updateLeftDisplay
 {
-    self.leftScore.text = [NSString stringWithFormat:@"%ld", (long)self.leftCount];
+    self.leftScore.text = [NSString stringWithFormat:@"%ld", (long) self.leftCount];
 }
 
 - (void) updateRightDisplay
 {
-    self.rightScore.text = [NSString stringWithFormat:@"%ld", (long)self.rightCount];
+    self.rightScore.text = [NSString stringWithFormat:@"%ld", (long) self.rightCount];
 }
 
 - (void) checkForWinner
@@ -131,7 +134,7 @@
 - (BOOL) twoPointDifferenceOrNotRequired
 {
     return (!self.scoringContext.needToWinByTwo ||
-            (self.scoringContext.needToWinByTwo && (abs((int)self.leftCount - (int)self.rightCount) >= 2)));
+            (self.scoringContext.needToWinByTwo && (abs((int) self.leftCount - (int) self.rightCount) >= 2)));
 }
 
 - (void) someoneWon
